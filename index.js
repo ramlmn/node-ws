@@ -168,6 +168,12 @@ wss.on('connection', (client) => {
   user.on('close', () => {
 
     console.log(`Client disconnected: ${user.id}!`);
+    
+    if (!user.hasOwnProperty('room')) {
+      // The user has not joined any room
+      // Just kick him off
+      return;
+    }
 
     // Check if a user is in that room he pretends to be
     if (rooms.get(user.room).includes(user.id)) {
