@@ -73,7 +73,7 @@ wss.on('connection', (client) => {
             // Tell the user that the room is full
             user.send({
               type: 'error',
-              body: `Room '${user.room}' id full!`
+              body: `Room '${room}' is full!`
             });
 
             // And close the connection
@@ -169,7 +169,7 @@ wss.on('connection', (client) => {
 
     console.log(`Client disconnected: ${user.id}!`);
     
-    if (!user.hasOwnProperty('room')) {
+    if (!user.room) {
       // The user has not joined any room
       // Just kick him off
       return;
@@ -197,13 +197,13 @@ wss.on('connection', (client) => {
       });
 
       // Remove user from rooms
-      rooms.get(user.room).filter(id => {
+      rooms.set(user.room, rooms.get(user.room).filter(id => {
         return id !== user.id;
-      });
+      }));
 
       // Remove the room if no one is in it
       if (rooms.get(user.room).length < 1) {
-        rooms.delete(use.room);
+        rooms.delete(user.room);
       }
 
       // Remove the user from the Map
