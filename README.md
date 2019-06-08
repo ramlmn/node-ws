@@ -68,8 +68,8 @@ __When sending requests:__
 
   Valid strings: `'join' | 'leave' | 'msg'`
 
-  `'join'` - A join request, used along with 'room'  
-  `'leave'` - Request to leave the room(WebSocket connection is not closed)  
+  `'join'` - A join request, used along with 'room'
+  `'leave'` - Request to leave the room(WebSocket connection is not closed)
   `'msg'` - Just send the messages to other users
 
 * `room`: _Name of room to join_
@@ -82,7 +82,7 @@ __When receiving responses:__
 
   Valid responses: `'msg' | 'notif'`
 
-  `'msg'` - Specifying a message is received  
+  `'msg'` - Specifying a message is received
   `'notif'` - Notification from server(like when users leave room)
 
 * `body`: _Includes message content_
@@ -97,4 +97,4 @@ use for you. _Use with caution!_
 ### License
 Author: [ramlmn](https://github.com/ramlmn/)
 
-License: [Apache-2.0](LICENSE)
+License: [MIT](LICENSE)
